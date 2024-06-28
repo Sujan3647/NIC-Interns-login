@@ -38,7 +38,7 @@ public class AuthService {
                 .clientSecret(passwordEncoder.encode(request.getClientSecret()))
                 .createdOn(date)
                 .expiryOn(expiryDate)
-                .role(Role.USER).build();
+                .role(Role.CLIENT).build();
         clientRepository.save(user);
         var jwtToken = jwtService.generateToken(user);
         return AuthResponse.builder().token(jwtToken).build();
